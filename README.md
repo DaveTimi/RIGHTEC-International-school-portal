@@ -1,0 +1,1 @@
+# RIGHTEC-International-school-portal
