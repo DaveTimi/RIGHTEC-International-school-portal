@@ -1,0 +1,10 @@
+name = "levity-ethics-systems"
+main = "functions/index.ts"
+compatibility_date = "2026-10-05"
+
+[observability]
+enabled = true
+
+[vars]
+APP_NAME = "Levity Ethics Systems"
+APP_ENV = "development"
