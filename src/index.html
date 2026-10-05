@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dave Timi EdTech Systems</title>
+
+  <meta
+    name="description"
+    content="Dave Timi EdTech Systems — modern school management technology for schools, teachers, students and parents."
+  />
+
+  <style>
+    :root {
+      --primary: #1757d5;
+      --primary-dark: #103fa5;
+      --blue-soft: #edf4ff;
+      --text: #142033;
+      --muted: #68758a;
+      --border: #e7ebf2;
+      --surface: #ffffff;
+      --background: #f7f9fc;
+      --green: #16a36a;
+      --shadow: 0 25px 70px rgba(20, 50, 100, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(231, 235, 242, 0.9);
+    }
+
+    .nav-inner {
+      max-width: 1240px;
+      margin: auto;
+      height: 76px;
+      padding: 0 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: max-content;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+
+      display: grid;
+      place-items: center;
+
+      color: white;
+      font-weight: 900;
+      font-size: 20px;
+
+      background:
+        linear-gradient(135deg, #174fd0, #4c8dff);
+
+      box-shadow: 0 10px 25px rgba(23, 87, 213, 0.25);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: #526078;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 11px;
+      padding: 12px 18px;
+      font-weight: 750;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--primary);
+      border: 1px solid #dbe3ef;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #1555d4, #2e72ee);
+      box-shadow: 0 10px 25px rgba(23, 87, 213, 0.22);
+    }
+
+    .btn-large {
+      padding: 15px 22px;
+      font-size: 15px;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      right: -260px;
+      top: -300px;
+      border-radius: 50%;
+      background: #e9f1ff;
+      filter: blur(5px);
+    }
+
+    .hero-inner {
+      max-width: 1240px;
+      margin: auto;
+      padding: 82px 24px 90px;
+
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 70px;
+      align-items: center;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 12px;
+      border-radius: 30px;
+
+      background: var(--blue-soft);
+      color: var(--primary);
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 5.5vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      max-width: 680px;
+      margin-bottom: 23px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .trust {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+      color: #69758a;
+      font-size: 13px;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin-left: -7px;
+
+      background:
+        linear-gradient(135deg, #dce8ff, #9cbcff);
+
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #164aa9;
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .school-image {
+      height: 430px;
+      border-radius: 28px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(18, 67, 150, 0.12),
+          rgba(255, 255, 255, 0)
+        ),
+        url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1400&q=85")
+        center / cover;
+
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .school-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 30, 70, 0.02),
+          rgba(10, 30, 70, 0.25)
+        );
+    }
+
+    .dashboard-card {
+      position: absolute;
+      z-index: 5;
+
+      left: -42px;
+      bottom: -45px;
+
+      width: 390px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(18px);
+
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+
+      padding: 20px;
+
+      box-shadow: 0 25px 60px rgba(20, 45, 90, 0.20);
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 17px;
+    }
+
+    .dashboard-header strong {
+      font-size: 14px;
+    }
+
+    .online {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .online::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 13px;
+      background: #f7f9fd;
+      border: 1px solid #edf0f5;
+    }
+
+    .stat small {
+      display: block;
+      color: #7a8598;
+      font-size: 10px;
+      margin-bottom: 4px;
+    }
+
+    .stat strong {
+      font-size: 20px;
+    }
+
+    .stat-growth {
+      color: var(--green);
+      font-size: 10px;
+      margin-left: 4px;
+    }
+
+    /* SECTION */
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-heading small {
+      color: var(--primary);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -1.7px;
+      margin: 10px 0 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* FEATURE CARDS */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 27px;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(30, 60, 110, 0.10);
+    }
+
+    .feature-icon {
+      width: 47px;
+      height: 47px;
+      border-radius: 13px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--blue-soft);
+      color: var(--primary);
+
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 9px;
+      font-size: 18px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* SHOWCASE */
+
+    .showcase {
+      background: #f1f5fb;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .showcase-image {
+      height: 440px;
+      border-radius: 25px;
+      overflow: hidden;
+
+      background:
+        url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1300&q=85")
+        center / cover;
+
+      box-shadow: var(--shadow);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 17px;
+      margin: 28px 0;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .check {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #e2f7ed;
+      color: #149661;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .check-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .check-item span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CTA */
+
+    .cta {
+      max-width: 1240px;
+      margin: auto;
+      padding: 30px 24px 100px;
+    }
+
+    .cta-box {
+      border-radius: 28px;
+      padding: 65px 45px;
+
+      text-align: center;
+
+      color: white;
+
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.18), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,.12), transparent 30%),
+        linear-gradient(135deg, #1244ad, #2572e9);
+
+      box-shadow: 0 25px 60px rgba(23, 87, 213, 0.20);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -1.5px;
+      margin-bottom: 13px;
+    }
+
+    .cta-box p {
+      color: #dbe8ff;
+      max-width: 600px;
+      margin: auto auto 25px;
+    }
+
+    .cta-box .btn {
+      background: white;
+      color: #1553c7;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: white;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: auto;
+      padding: 45px 24px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      max-width: 330px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 50px;
+    }
+
+    .footer-column strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 13px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .footer-column a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      border-top: 1px solid var(--border);
+      padding: 18px 24px;
+      text-align: center;
+      color: #8490a3;
+      font-size: 12px;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(15, 30, 55, 0.42);
+      backdrop-filter: blur(8px);
+
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(450px, 100%);
+      background: white;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.20);
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .close {
+      width: 35px;
+      height: 35px;
+      border-radius: 9px;
+      background: #f2f4f8;
+      color: #596579;
+    }
+
+    .modal-card h2 {
+      margin-bottom: 7px;
+    }
+
+    .modal-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      border: 1px solid #dce2eb;
+      border-radius: 10px;
+      padding: 12px;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #eaf1ff;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner,
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        padding-top: 60px;
+      }
+
+      .hero-visual {
+        max-width: 700px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .dashboard-card {
+        left: 20px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner {
+        height: 68px;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .school-image {
+        height: 310px;
+      }
+
+      .dashboard-card {
+        position: relative;
+        left: 0;
+        bottom: auto;
+        margin-top: -40px;
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+      .showcase-image {
+        height: 310px;
+      }
+
+      .cta-box {
+        padding: 45px 24px;
+      }
+
+      .footer-links {
+        width: 100%;
+        gap: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav class="nav">
+    <div class="nav-inner">
+
+      <a href="#" class="brand">
+
+        <div class="brand-icon">
+          D
+        </div>
+
+        <div class="brand-text">
+          <strong>Dave Timi EdTech Systems</strong>
+          <span>Powering modern education</span>
+        </div>
+
+      </a>
+
+      <div class="nav-links">
+        <a href="#solutions">Solutions</a>
+        <a href="#platform">Platform</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div class="nav-actions">
+
+        <button
+          class="btn btn-outline"
+          onclick="openModal('login')"
+        >
+          Sign in
+        </button>
+
+        <button
+          class="btn btn-primary"
+          onclick="openModal('register')"
+        >
+          Get started
+        </button>
+
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-inner">
+
+      <div>
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Modern school management
+        </div>
+
+        <h1>
+          The smarter way to
+          <span>run your school.</span>
+        </h1>
+
+        <p class="hero-description">
+          Dave Timi EdTech Systems brings your entire school
+          together in one beautiful platform — students,
+          teachers, academics, attendance, results, finance
+          and communication.
+        </p>
+
+        <div class="hero-actions">
+
+          <button
+            class="btn btn-primary btn-large"
+            onclick="openModal('register')"
+          >
+            Create your school →
+          </button>
+
+          <button
+            class="btn btn-outline btn-large"
+            onclick="openModal('login')"
+          >
+            School login
+          </button>
+
+        </div>
+
+        <div class="trust">
+
+          <div class="avatars">
+            <div class="avatar">S</div>
+            <div class="avatar">T</div>
+            <div class="avatar">A</div>
+            <div class="avatar">P</div>
+          </div>
+
+          <span>
+            Built for administrators, teachers,
+            students and parents.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="school-image"></div>
+
+        <div class="dashboard-card">
+
+          <div class="dashboard-header">
+
+            <strong>School overview</strong>
+
+            <span class="online">
+              System online
+            </span>
+
+          </div>
+
+          <div class="stats">
+
+            <div class="stat">
+              <small>Students</small>
+              <strong>1,248</strong>
+              <span class="stat-growth">+8%</span>
+            </div>
+
+            <div class="stat">
+              <small>Staff</small>
+              <strong>86</strong>
+              <span class="stat-growth">+4%</span>
+            </div>
+
+            <div class="stat">
+              <small>Attendance</small>
+              <strong>94%</strong>
+              <span class="stat-growth">+2%</span>
+            </div>
+
+            <div class="stat">
+              <small>Fees collected</small>
+              <strong>₦8.4m</strong>
+              <span class="stat-growth">+12%</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- FEATURES -->
+
+  <section class="section" id="features">
+
+    <div class="section-heading center">
+
+      <small>One platform</small>
+
+      <h2>
+        Everything your school needs.
+      </h2>
+
+      <p>
+        Replace scattered spreadsheets, paperwork and
+        disconnected systems with one organized platform.
+      </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+      <article class="feature-card">
+
+        <div class="feature-icon">🎓</div>
+
+        <h3>Student Management</h3>
+
+        <p>
+          Manage admissions, student profiles, classes,
+          records and important information from one place.
+        </p>
+
+      </article>
+
+
+      <article class="feature-card">
+
+        <div class="feature-icon">📚</div>
+
+        <h3>Academics</h3>
+
+        <p>
+          Organize sessions, terms, subjects, examinations,
+          assignments and academic results.
+        </p>
+
+      </article>
+
+
+      <article class="feature-card">
+
+        <div class="feature-icon">📊</div>
+
+        <h3>Attendance</h3>
+
+        <p>
+          Track attendance and quickly understand how
+          students are performing day by day.
+        </p>
+
+      </article>
+
+
+      <article class="feature-card">
+
+        <div class="feature-icon">💳</div>
+
+        <h3>Fees & Payments</h3>
+
+        <p>
+          Manage school fees, payments, balances and
+          financial records with clarity.
+        </p>
+
+      </article>
+
+
+      <article class="feature-card">
+
+        <div class="feature-icon">📢</div>
+
+        <h3>Communication</h3>
+
+        <p>
+          Keep parents, students and staff informed with
+          announcements and notifications.
+        </p>
+
+      </article>
+
+
+      <article class="feature-card">
+
+        <div class="feature-icon">🔐</div>
+
+        <h3>Roles & Security</h3>
+
+        <p>
+          Give administrators, teachers, students and
+          parents the right level of access.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- PLATFORM SHOWCASE -->
+
+  <section class="showcase" id="platform">
+
+    <div class="section showcase-grid">
+
+      <div class="showcase-image"></div>
+
+      <div>
+
+        <div class="section-heading">
+
+          <small>Designed for real schools</small>
+
+          <h2>
+            Less paperwork.
+            More progress.
+          </h2>
+
+          <p>
+            Give your school team the tools they need to
+            spend less time managing information and more
+            time focusing on education.
+          </p>
+
+        </div>
+
+
+        <div class="check-list">
+
+          <div class="check-item">
+
+            <div class="check">✓</div>
+
+            <div>
+              <strong>Centralized school records</strong>
+              <span>
+                Keep important school information organized.
+              </span>
+            </div>
+
+          </div>
+
+
+          <div class="check-item">
+
+            <div class="check">✓</div>
+
+            <div>
+              <strong>Powerful academic management</strong>
+              <span>
+                Manage exams, assignments and results.
+              </span>
+            </div>
+
+          </div>
+
+
+          <div class="check-item">
+
+            <div class="check">✓</div>
+
+            <div>
+              <strong>Clear financial visibility</strong>
+              <span>
+                Know what has been paid and what is outstanding.
+              </span>
+            </div>
+
+          </div>
+
+
+          <div class="check-item">
+
+            <div class="check">✓</div>
+
+            <div>
+              <strong>Built to grow with your school</strong>
+              <span>
+                Start small and expand as your school grows.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="btn btn-primary"
+          onclick="openModal('register')"
+        >
+          Start your school →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="cta-box">
+
+      <h2>
+        Your school's future starts here.
+      </h2>
+
+      <p>
+        Create your school workspace and bring your
+        administration, academics and community together.
+      </p>
+
+      <button
+        class="btn btn-large"
+        onclick="openModal('register')"
+      >
+        Create your school
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer id="about">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+
+        <div class="brand">
+
+          <div class="brand-icon">
+            D
+          </div>
+
+          <div class="brand-text">
+            <strong>Dave Timi EdTech Systems</strong>
+            <span>Powering modern education</span>
+          </div>
+
+        </div>
+
+        <p>
+          Technology designed to help schools operate
+          smarter, communicate better and grow confidently.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <strong>Platform</strong>
+
+          <a href="#features">Features</a>
+          <a href="#platform">Dashboard</a>
+          <a href="#">Students</a>
+          <a href="#">Academics</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <strong>Company</strong>
+
+          <a href="#about">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Support</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Dave Timi EdTech Systems. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- MODAL -->
+
+  <div
+    class="modal"
+    id="modal"
+    onclick="closeOutside(event)"
+  >
+
+    <div class="modal-card">
+
+      <div class="modal-top">
+
+        <div>
+          <h2 id="modalTitle">
+            Create your school
+          </h2>
+
+          <p id="modalDescription">
+            Set up your school's workspace.
+          </p>
+        </div>
+
+        <button
+          class="close"
+          onclick="closeModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form onsubmit="handleSubmit(event)">
+
+        <div
+          class="form-group"
+          id="schoolNameGroup"
+        >
+
+          <label>
+            School name
+          </label>
+
+          <input
+            type="text"
+            id="schoolName"
+            placeholder="Rightec International School"
+          />
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="admin@school.com"
+            required
+          />
+
+        </div>
+
+
+        <div
+          class="form-group"
+          id="nameGroup"
+        >
+
+          <label>
+            Your name
+          </label>
+
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Dave Timi"
+          />
+
+        </div>
+
+
+        <button
+          class="btn btn-primary form-submit"
+          type="submit"
+        >
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    let modalMode = "register";
+
+    function openModal(mode) {
+
+      modalMode = mode;
+
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("modalTitle");
+      const description = document.getElementById("modalDescription");
+
+      const schoolGroup =
+        document.getElementById("schoolNameGroup");
+
+      if (mode === "register") {
+
+        title.textContent = "Create your school";
+
+        description.textContent =
+          "Set up your school's workspace.";
+
+        schoolGroup.style.display = "block";
+
+      } else {
+
+        title.textContent = "Welcome back";
+
+        description.textContent =
+          "Sign in to your school workspace.";
+
+        schoolGroup.style.display = "none";
+
+      }
+
+      modal.classList.add("active");
+    }
+
+
+    function closeModal() {
+
+      document
+        .getElementById("modal")
+        .classList.remove("active");
+
+    }
+
+
+    function closeOutside(event) {
+
+      if (event.target.id === "modal") {
+        closeModal();
+      }
+
+    }
+
+
+    function handleSubmit(event) {
+
+      event.preventDefault();
+
+      if (modalMode === "register") {
+
+        alert(
+          "School registration is ready for the next connection step."
+        );
+
+      } else {
+
+        alert(
+          "School login is ready for the authentication step."
+        );
+
+      }
+
+    }
+
+  </script>
+
+</body>
+  </html>
