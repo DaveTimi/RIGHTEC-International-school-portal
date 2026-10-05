@@ -14,5 +14,3 @@ binding = "DB"
 database_name = "levity-ethics-systems-db"
 database_id = "5e9486ab-6791-47e6-ae90-933970b16f07"
 migrations_dir = "database/migrations"
-
-# Levity Ethics Systems - Cloudflare deployment
